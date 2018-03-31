@@ -6,26 +6,26 @@ var CLI = require('..')
 var cli = new CLI()
 
 cli.on('error', function (err) {
-  console.error(chalk.gray(stamp) + chalk.red('✗ ERROR'))
+  console.error(chalk.gray(stamp()) + chalk.red('✗ ERROR'))
   console.error(err)
 })
 
 cli.on('warning', function (warn) {
-  console.warn(chalk.gray(stamp) + chalk.yellow('⚠ WARNING'))
+  console.warn(chalk.gray(stamp()) + chalk.yellow('⚠ WARNING'))
   console.warn(warn)
 })
 
 cli.on('compile', function (res) {
   var compileTime = (res.stats.endTime - res.stats.startTime) / 1000
-  console.log(chalk.gray(stamp) + chalk.green('compiled') + ' ' + chalk.gray('(' + compileTime + 's)'))
+  console.log(chalk.gray(stamp()) + chalk.green('compiled') + ' ' + chalk.gray('(' + compileTime + 's)'))
 })
 
 cli.on('success', function (msg) {
-  console.log(chalk.gray(stamp) + chalk.green('✓ ' + msg))
+  console.log(chalk.gray(stamp()) + chalk.green('✓ ' + msg))
 })
 
 cli.on('info', function (msg) {
-  console.log(chalk.gray(stamp) + chalk.gray('▸ ' + msg))
+  console.log(chalk.gray(stamp()) + chalk.gray('▸ ' + msg))
 })
 
 cli.run(process.argv.slice(2))
